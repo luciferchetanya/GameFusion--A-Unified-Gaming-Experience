@@ -1,0 +1,13 @@
+﻿  Chetanya Jain.cpp
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(99,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(141,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(159,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(208,37): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(208,32): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(208,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(218,81): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(218,74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(218,47): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(234,72): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\cheta\source\repos\Chetanya Jain\Chetanya Jain.cpp(234,40): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Chetanya Jain.vcxproj -> C:\Users\cheta\source\repos\Chetanya Jain\x64\Debug\Chetanya Jain.exe

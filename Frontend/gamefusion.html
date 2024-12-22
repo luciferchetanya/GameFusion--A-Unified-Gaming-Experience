@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+    <title>GameFusion - Play Your Way</title>
+    <style>
+        :root {
+            --primary-color: #e50914;
+            --dark-color: #141414;
+            --light-color: #f4f4f4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: #999;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .showcase {
+            width: 100%;
+            height: 93vh;
+            position: relative;
+            background: url('https://pbs.twimg.com/profile_images/1718302454956036096/lv29rHop_400x400.jpg') no-repeat center center/cover;
+        }
+
+        .showcase::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .showcase-top {
+            position: relative;
+            z-index: 2;
+            height: 90px;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .showcase-top h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-family: 'Carter One', cursive;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .showcase-content {
+            position: relative;
+            z-index: 2;
+            width: 70%;
+            margin: auto;
+            text-align: center;
+            margin-top: 9rem;
+        }
+
+        .showcase-content h1 {
+            font-weight: 700;
+            font-size: 5.2rem;
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .showcase-content p {
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        .tabs {
+            background: var(--dark-color);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .tabs .container {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .tabs .tab-item {
+            cursor: pointer;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tabs .tab-item:hover {
+            color: red;
+        }
+
+        .tab-border {
+            border-bottom: var(--primary-color) 4px solid;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem 1rem;
+            background: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        .tab-content.show {
+            display: block;
+        }
+
+        .tab-content img {
+            max-width: 200px;
+            margin: 1rem auto;
+        }
+
+        .game-hover {
+            position: relative;
+            display: inline-block;
+            margin-right: 50px;
+        }
+
+        .game-hover .description {
+            display: none;
+            position: absolute;
+            left: 220px;
+            top: 0;
+            width: 250px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        .game-hover:hover .description {
+            display: block;
+        }
+
+        .game-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            background: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-cols {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-cols div {
+            margin: 0.5rem;
+        }
+
+        .footer-cols i {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .footer p {
+            margin-top: 1rem;
+        }
+
+        .signup-form {
+            display: inline-block;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 300px;
+            margin: auto;
+        }
+
+        .signup-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border: 2px solid var(--primary-color);
+        }
+
+        .signup-form .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.7rem;
+            background: var(--primary-color);
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signup-form .btn:hover {
+            background: #d40812;
+        }
+
+        /* Header - Username display */
+        .header-username {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="showcase">
+        <div class="showcase-top"></div>
+        <div class="showcase-content">
+            <h1>GameFusion</h1>
+            <p>Step into the future of gaming</p>
+        </div>
+        <div class="header-username" id="username-display"></div>
+    </header>
+    <section class="tabs">
+        <div class="container">
+            <div id="tab-1" class="tab-item tab-border">
+                <i class="fas fa-gamepad fa-3x"></i>
+                <p>Discover New Games</p>
+            </div>
+            <div id="tab-2" class="tab-item">
+                <i class="fas fa-users fa-3x"></i>
+                <p>Join Communities</p>
+            </div>
+            <div id="tab-3" class="tab-item">
+                <i class="fas fa-trophy fa-3x"></i>
+                <p>Compete in Tournaments</p>
+            </div>
+            <div id="tab-4" class="tab-item">
+                <i class="fas fa-user-plus fa-3x"></i>
+                <p>Sign Up</p>
+            </div>
+        </div>
+    </section>
+    <!-- <section id="tab-1-content" class="tab-content show">
+        <h2>Discover New Games</h2>
+        <div class="game-hover">
+            <img src="https://play-lh.googleusercontent.com/17Q7hj7M7I7MbPl9teyp2NRBqpTsWG4cN4BVGYuPWxGZzrDSsrLJ9p9zR9HN6LaaWEc=w240-h480-rw" alt="Mendeleev's Marvel">
+            <p class="game-title">Mendeleev's Marvel</p>
+            <div class="description">In "Mendeleev's Marvel," click on grid cells to select elements...</div>
+        </div>
+        <div class="game-hover">
+            <img src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg" alt="2-Player Chess">
+            <p class="game-title">2-Player Chess</p>
+            <div class="description">In Chess, move your pieces to checkmate the opponent's king...</div>
+        </div>
+    </section> -->
+    <section id="tab-1-content" class="tab-content show">
+        <h2>Discover New Games</h2>
+        <div class="game-hover" onclick="runCpp('Chetanya Jain.cpp')">
+            <img src="https://play-lh.googleusercontent.com/17Q7hj7M7I7MbPl9teyp2NRBqpTsWG4cN4BVGYuPWxGZzrDSsrLJ9p9zR9HN6LaaWEc=w240-h480-rw" alt="Mendeleev's Marvel">
+            <p class="game-title">Mendeleev's Marvel</p>
+            <div class="description">In "Mendeleev's Marvel," click on grid cells to select elements. Your score increases by selecting consecutive elements in order. Try to match adjacent elements with consecutive atomic numbers to maximize your score!</div>
+        </div>
+        <div class="game-hover" onclick="runCpp('2_player_chess.cpp')">
+            <img src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg" alt="2-Player Chess">
+            <p class="game-title">2-Player Chess</p>
+            <div class="description">In Chess, move your pieces to checkmate the opponent's king. Capture pieces while protecting your own king. The game ends with checkmate or a draw.</div>
+        </div>
+    </section>
+    
+    <section id="tab-2-content" class="tab-content">
+        <h2>Join Communities</h2>
+        <p>Connect with gamers worldwide. Join forums, share strategies...</p>
+    </section>
+    <section id="tab-3-content" class="tab-content">
+        <h2>Compete in Tournaments</h2>
+        <p>Take part in competitive tournaments and win exciting prizes...</p>
+    </section>
+    <section id="tab-4-content" class="tab-content">
+        <h2>Sign Up</h2>
+        <form class="signup-form">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </section>
+    <<footer class="footer">
+        <div class="footer-cols">
+            <div><i class="fab fa-facebook"></i></div>
+            <div><i class="fab fa-twitter"></i></div>
+            <div><i class="fab fa-instagram"></i></div>
+            <div><i class="fab fa-youtube"></i></div>
+        </div>
+        <p>© 2024 GameFusion. All rights reserved.</p>
+        <p class="made-by">Made by Chetanya Jain, Pallika Dudeja, Vani Chaudhary, and Vansh Chauhan</p>
+    </footer>
+    
+    <!-- <script>
+        const tabs = document.querySelectorAll('.tab-item');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-border'));
+                contents.forEach(c => c.classList.remove('show'));
+                tab.classList.add('tab-border');
+                contents[index].classList.add('show');
+            });
+        });
+
+        // Sign-up form handler
+        document.querySelector('.signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Save username to localStorage
+            localStorage.setItem('username', username);
+
+            alert('Sign Up Successful!');
+            document.getElementById('username-display').textContent = `Welcome, ${username}!`;
+        });
+
+        // Check for existing username in localStorage on page load
+        window.onload = function () {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('username-display').textContent = `Welcome, ${username}!`;
+            }
+        };
+    </script> -->
+    <script>
+        const tabs = document.querySelectorAll('.tab-item');
+        const contents = document.querySelectorAll('.tab-content');
+    
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('tab-border'));
+                contents.forEach(c => c.classList.remove('show'));
+                tab.classList.add('tab-border');
+                contents[index].classList.add('show');
+            });
+        });
+    
+        // Sign-up form handler
+        document.querySelector('.signup-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+    
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+    
+            try {
+                // Send data to the backend
+                const response = await fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+    
+                const result = await response.json();
+    
+                if (response.ok) {
+                    alert(result.message);
+                    document.getElementById('username-display').textContent = `Welcome, ${username}!`;
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                alert('Error signing up. Please try again later.');
+                console.error(error);
+            }
+        });
+    
+        // Check for existing username in localStorage on page load
+        window.onload = function () {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('username-display').textContent = `Welcome, ${username}!`;
+            }
+        };
+    </script>
+    
+    
+    
+    
+</body>
+</html>
